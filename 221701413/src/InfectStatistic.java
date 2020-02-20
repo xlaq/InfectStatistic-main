@@ -18,10 +18,12 @@ import com.sun.xml.internal.bind.v2.runtime.Name;
  * @since xxx
  */
 class InfectStatistic {
+	public static void main(String[] args) {
+       
+	}
 
-}
 class province{
-	private int[] name = new int[35];
+	public int[] name =new int[32];
 	private int ip = 0;
 	private int sp = 0;
 	private int cure = 0;
@@ -37,55 +39,65 @@ class province{
 			 "台湾", "天津", "西藏", "香港",
 		     "新疆", "云南", "浙江"	
 	};
-	Map<String,Integer> map1 = new HashMap<String, Integer>();
-	province() {
-		for (int i = 0; i < name.length; i++) {
-			name[i] = 0;
-			name[i]=i;
-		}
-		for (int i = 0; i < name.length; i++) {
-			map1.put(provinceList[i], i);
-			
-		}
-	};
-	public int getIp() {
-		return ip;
-	}
-	public void setIp(int ip) {
-		this.ip = ip;
-	}
-	public int getSp() {
-		return sp;
-	}
-	public void setSp(int sp) {
-		this.sp = sp;
-	}
-	public int getCure() {
-		return cure;
-	}
-	public void setCure(int cure) {
-		this.cure = cure;
-	}
-	public int getDead() {
-		return dead;
-	}
-	public void setDead(int dead) {
-		this.dead = dead;
-	}
-    public String printResult(){
-        return name+" 感染患者"+ip+"人"+" 疑似患者"+sp+"人"+ " 治愈"+cure+"人"+" 死亡"+dead+"人";
-    }
-    public String printIp(){
-        return " 感染患者"+ip+"人";
-    }
-    public String printSp(){
-        return " 疑似患者"+sp+"人";
-    }
-    public String printCure(){
-        return " 治愈"+cure+"人";
-    }
-    public String printDead(){
-        return " 死亡"+dead+"人";
-    }
-			
+
+
+}			
+ class cmdList{
+	 public String args[];
+	    cmdList(String args[]) {
+	        this.args = args;
+	    }
+ }
+	 public void cmdGet(String [] args)
+		{
+			if(args.length > 0 && args[0].matches("list"))
+			{
+				for(int i = 1;i+1<args.length;i++)
+				{
+					if(args[i].matches("-.*"))
+					{
+						switch(args[i])
+						{
+						case "-log":String log;log = args[i+1];break;
+						case "-out":String out;out = args[i+1];break;
+						case "-date":String date;date = args[i+1];break;
+						case "-province":
+							for(;;i++)
+							{
+								if(i+1<args.length)
+								{
+								if(!args[i+1].matches("-.*"))
+								{
+									
+								}else
+									break;
+								}else
+									break;
+							}
+							break;
+						case "-type":
+							for(int k=0;;i++,k++)
+							{
+								if(i+1<args.length)
+								{
+								if(!args[i+1].matches("-.*"))
+								{
+									
+								}else
+									break;
+								}else
+									break;
+							}
+							break;
+						default:
+							System.out.print("输入错误参数"+args[i]+"请重新输入");
+							System.exit(0);
+						}
+					}
+				}
+			}else
+			{
+				System.out.print("没有list,请重新输入");
+			}
+         }
 }
